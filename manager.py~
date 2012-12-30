@@ -46,6 +46,7 @@ def get_movie_dict():
     my_map[3] = ["James Bond",1999,5.0]
     my_map[4] = ["Rush Hour",1999,4.5]
     my_map[5] = ["SpiderMan2",2001,4.34]
+    my_map[5][2]=4.0
     return my_map
 
 def find_highest_rated_movie(movies_dict):
