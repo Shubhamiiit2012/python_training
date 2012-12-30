@@ -38,9 +38,11 @@ def movie_manager():
 
 #Find most watched genre
     most_watched_genre=get_most_watched_genre(movies_dict)
-    
+    print("\n\nMost Watched Genre is "+ str(most_watched_genre))
 
-
+#Find highest rated genre
+    highest_rated_genre = get_highest_rated_genre(movies_dict)
+    print("\nHighest Rated Genre is : "+str(highest_rated_genre))
 #Movie Manager Ends Here.
 
 Movie = namedtuple('Movie', ['title', 'year', 'rating'])
@@ -87,7 +89,7 @@ def find_most_watched_movie(movies_dict):
     return most_watched_movie_id
 
 def get_most_watched_genre(movies_dict):
-    genre_frequency_list=[0,0,0,0,0,0,0,0,0]
+    genre_frequency_list=[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
     for movie_id in movies_dict:
         for genre_id in movies_dict[movie_id][5]:
             #movies_dict[movie_id][5][genre_id]
@@ -100,6 +102,23 @@ def get_most_watched_genre(movies_dict):
             max_genre_index=i
         i+=1
     return max_genre_index
+    
+def get_highest_rated_genre(movies_dict):
+    genre_rate_list=[0,0,0,0,0,0,0,0,0]
+    highest_rate_of_genre=0
+    for movie_id in movies_dict:
+        for genre_id in movies_dict[movie_id][5]:
+            #movies_dict[movie_id][5][genre_id]
+            genre_rate_list[genre_id]+=movies_dict[movie_id][2]
+    i=0
+    highest_rated_genre_index=0
+    for rate_value in genre_rate_list:
+        print("Genre = "+str(i)+" Value = "+str(rate_value))
+        if rate_value > highest_rate_of_genre:
+            highest_rated_genre_index=i
+            highest_rate_of_genre=rate_value
+        i+=1
+    return [highest_rated_genre_index, highest_rated_genre]
 #Movie Data File Handling ends here.
 
 #New Field Starts Here.
