@@ -26,11 +26,15 @@ def movie_manager():
         print("Highest Rated Movie Of Year "+str(line)+" : "+str(movies_dict[highest_rated_movie_by_year[line]]))
     #Found Highest Rated Movie By Year
 
+#Find Most Watched Movie
+    most_watched_movie_id=find_most_watched_movie(movies_dict)
+    print("\n\nMost Watched Movie : "+ str(movies_dict[most_watched_movie_id]))
+#Found Most Watched Movie
     #for line in movies_dict:
     #   for i in movies_dict[line]:
     #       print(i)
     for line in movies_dict:
-        rating_movie_map[movies_dict[line][2]]=movies_dict[line]
+        rating_movie_map[movies_dict[line][4]]=movies_dict[line]
     for line in rating_movie_map:
         print(str(line)+" : "+str(rating_movie_map[line]))
 #Movie Manager Ends Here.
@@ -40,13 +44,12 @@ Movie = namedtuple('Movie', ['title', 'year', 'rating'])
 #Movie Data File Handling goes here.
 def get_movie_dict():
     my_map={}
-    my_map[0] = ["Toy Story",1979,4.5]
-    my_map[1] = ["SpiderMan",2001,4.33]
-    my_map[2] = ["Harry Potter",2006,4.2]
-    my_map[3] = ["James Bond",1999,5.0]
-    my_map[4] = ["Rush Hour",1999,4.5]
-    my_map[5] = ["SpiderMan2",2001,4.34]
-    my_map[5][2]=4.0
+    my_map[0] = ["Toy Story",1979,31.5,7,4.5]
+    my_map[1] = ["SpiderMan",2001,86.6,20,4.33]
+    my_map[2] = ["Harry Potter",2006,37.8,9,4.2]
+    my_map[3] = ["James Bond",1999,80,16,5.0]
+    my_map[4] = ["Rush Hour",1999,99,22,4.5]
+    my_map[5] = ["SpiderMan2",2001,186.62,43,4.34]
     return my_map
 
 def find_highest_rated_movie(movies_dict):
@@ -54,8 +57,8 @@ def find_highest_rated_movie(movies_dict):
     highest_rating=0
     
     for movieid in movies_dict:
-        if movies_dict[movieid][2] > highest_rating:
-            highest_rating = movies_dict[movieid][2]
+        if movies_dict[movieid][4] > highest_rating:
+            highest_rating = movies_dict[movieid][4]
             highest_rated_movie_id = movieid
     return highest_rated_movie_id
 
@@ -70,7 +73,14 @@ def find_highest_rated_movie_by_year(movies_dict):
             rating_by_year_map[movies_dict[line][1]]=line
     return rating_by_year_map
 
-
+def find_most_watched_movie(movies_dict):
+    most_watched_movie_id=0
+    watching_frequency=0
+    for movie_id in movies_dict:
+        if movies_dict[movie_id][3]>watching_frequency:
+            watching_frequency=movies_dict[movie_id][3]
+            most_watched_movie_id=movie_id
+    return most_watched_movie_id
 #Movie Data File Handling ends here.
 
 #New Field Starts Here.
