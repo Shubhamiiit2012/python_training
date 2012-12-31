@@ -33,11 +33,11 @@ def movie_manager():
 
 #Find most watched genre
     most_watched_genre=get_most_watched_genre(movies_dict)
-    print("\n\nMost Watched Genre is "+ str(most_watched_genre))
+    print("\n\nMost Watched Genre is "+ str(most_watched_genre[0])+" Times watched = "+ str(most_watched_genre[1]))
 
 #Find highest rated genre
     highest_rated_genre = get_highest_rated_genre(movies_dict)
-    print("\nHighest Rated Genre is : "+str(highest_rated_genre))
+    print("\nHighest Rated Genre is : "+str(highest_rated_genre[0])+" Total ratings = "+str(highest_rated_genre[1]))
 #Movie Manager Ends Here.
 
 Movie = namedtuple('Movie', ['title', 'year', 'rating'])
@@ -99,7 +99,7 @@ def get_most_watched_genre(movies_dict):
             max_genre=genre_val
             max_genre_index=i
         i+=1
-    return max_genre_index
+    return [max_genre_index, max_genre]
     
 def get_highest_rated_genre(movies_dict):
     genre_rate_list=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
