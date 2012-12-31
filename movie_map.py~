@@ -21,7 +21,7 @@ def get_movie_dict_other(movie_file, rating_file):
         
         #print(tokken[4])
         movies_dict[int(tokken[0])]=[name_tokken[0],movie_year,0,0,0,genre_list]
-    fin=open("ratings.data")
+    fin=open(rating_file)
     user_activity_map={}
     for line in fin:
         rating_tokken=line.split("\t")

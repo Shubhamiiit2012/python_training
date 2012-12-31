@@ -18,8 +18,7 @@ def get_movie_dict_other(movie_file, rating_file):
             i+=1
         for year in year_tokken:
             movie_year=year
-        
-        #print(tokken[4])
+
         movies_dict[int(tokken[0])]=[name_tokken[0],movie_year,0,0,0,genre_list]
     fin=open(rating_file)
     user_activity_map={}

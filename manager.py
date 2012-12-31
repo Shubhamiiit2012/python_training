@@ -7,11 +7,10 @@ def movie_manager():
 
     database=get_movie_dict_other("movie.data","ratings.data")
     movies_dict=database[0]
-    #rating_movie_map=database[1]
     
     #Find Most Active User.
     user_activity_map={}
-    user_activity_map=database[1]#get_user_activity("ratings.data")
+    user_activity_map=database[1]
     most_active_user_id=get_most_active_user(user_activity_map)
     print("\n\nMost Active User id = "+str(most_active_user_id)+"\n\tTotal Activities = "+str(user_activity_map[most_active_user_id])+"\n\n")
     #Found Most Active User.
@@ -31,11 +30,6 @@ def movie_manager():
     most_watched_movie_id=find_most_watched_movie(movies_dict)
     print("\n\nMost Watched Movie : "+ str(movies_dict[most_watched_movie_id])+"\n\n")
 #Found Most Watched Movie
-    #for line in movies_dict:
-    #   for i in movies_dict[line]:
-    #       print(i)
-    #for line in movies_dict:
-        #rating_movie_map[movies_dict[line][4]]=movies_dict[line]
 
 #Find most watched genre
     most_watched_genre=get_most_watched_genre(movies_dict)
@@ -97,7 +91,6 @@ def get_most_watched_genre(movies_dict):
     genre_frequency_list=[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
     for movie_id in movies_dict:
         for genre_id in movies_dict[movie_id][5]:
-            #movies_dict[movie_id][5][genre_id]
             genre_frequency_list[genre_id]+=1
     i=0
     max_genre=0
@@ -113,7 +106,6 @@ def get_highest_rated_genre(movies_dict):
     highest_rate_of_genre=0
     for movie_id in movies_dict:
         for genre_id in movies_dict[movie_id][5]:
-            #movies_dict[movie_id][5][genre_id]
             genre_rate_list[genre_id]+=movies_dict[movie_id][2]
     i=0
     highest_rated_genre_index=0
