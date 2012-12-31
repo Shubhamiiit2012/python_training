@@ -1,11 +1,12 @@
 from collections import namedtuple
+from movie_map import get_movie_dict_other
 
 #New Field starts Here
 #Movie Manager Calculates all the WarmUp problems.
 def movie_manager():
 
     movies_dict={}
-    movies_dict=get_movie_dict()
+    movies_dict=get_movie_dict_other("movie.data")
     rating_movie_map={}
     
     #Find Most Active User.
@@ -46,6 +47,10 @@ def movie_manager():
 #Movie Manager Ends Here.
 
 Movie = namedtuple('Movie', ['title', 'year', 'rating'])
+
+
+
+
 #New Field Starts Here.
 #Movie Data File Handling goes here.
 def get_movie_dict():
@@ -118,7 +123,7 @@ def get_highest_rated_genre(movies_dict):
             highest_rated_genre_index=i
             highest_rate_of_genre=rate_value
         i+=1
-    return [highest_rated_genre_index, highest_rated_genre]
+    return [highest_rated_genre_index, highest_rate_of_genre]
 #Movie Data File Handling ends here.
 
 #New Field Starts Here.
